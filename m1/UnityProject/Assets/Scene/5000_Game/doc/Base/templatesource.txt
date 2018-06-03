@@ -1,0 +1,8 @@
+﻿:output=BaseControl_created.cs
+:tempfunc=templatefunc.txt
+:enc=utf-8
+::
+public partial class BaseControl : StateManager {
+
+    $contents2$
+}
