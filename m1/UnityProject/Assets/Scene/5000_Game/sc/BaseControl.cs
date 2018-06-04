@@ -42,13 +42,13 @@
     }
     
     //S_ZOOM_LAUNCH
-    void camera_zoom_at_launch()
+    void camera_zoom_at_launch(float speed)
     {
         var cm    = Globals.cameraMove;
         var start = Globals.stageMarker.m_camera_0.transform.position;
         var goal  = Globals.stageMarker.m_camera_1.transform.position;
 
-        cm.Move(start,goal,10);
+        cm.Move(start,goal,speed);
     }
     bool camera_zoom_at_launch_done()
     {

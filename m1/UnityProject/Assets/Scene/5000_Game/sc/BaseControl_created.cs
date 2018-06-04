@@ -184,7 +184,7 @@ public partial class BaseControl : StateManager {
     {
         if (bFirst)
         {
-            camera_zoom_at_launch();
+            camera_zoom_at_launch(20);
         }
 
         if (!camera_zoom_at_launch_done()) return;
