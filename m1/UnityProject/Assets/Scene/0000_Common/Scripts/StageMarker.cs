@@ -6,8 +6,10 @@ public class StageMarker : MonoBehaviour {
 
     public GameObject m_man_show;
     public GameObject m_rocket_show;
+    public GameObject m_rocket_2;
     public GameObject m_camera_0;
     public GameObject m_camera_1;
+    public GameObject m_camera_2;
 
 
 	// Use this for initialization

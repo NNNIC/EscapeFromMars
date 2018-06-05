@@ -192,6 +192,29 @@ public partial class BaseControl : StateManager {
 
         if (!HasNextState())
         {
+            SetNextState(S_LAUNCH);
+        }
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_LAUNCH
+        発射
+    */
+    void S_LAUNCH(bool bFirst)
+    {
+        if (bFirst)
+        {
+            rocket_launch(100);
+        }
+
+        if (!rocket_launch_done()) return;
+
+
+        if (!HasNextState())
+        {
             SetNextState(S_GAMESCENE);
         }
         if (HasNextState())

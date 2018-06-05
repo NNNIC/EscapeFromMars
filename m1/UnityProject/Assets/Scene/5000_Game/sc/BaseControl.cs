@@ -55,4 +55,18 @@
         var cm    = Globals.cameraMove;
         return cm.IsMoveDone();
     }
+
+    //S_LAUNCH
+    void rocket_launch(float speed)
+    {
+        var rm = Globals.rocketMove;
+        var start = Globals.stageMarker.m_rocket_show.transform.position;
+        var goal  = Globals.stageMarker.m_rocket_2.transform.position;
+        rm.Move(start,goal,speed);
+    }
+    bool rocket_launch_done()
+    {
+        var rm = Globals.rocketMove;
+        return rm.IsMoveDone();      
+    }
 }

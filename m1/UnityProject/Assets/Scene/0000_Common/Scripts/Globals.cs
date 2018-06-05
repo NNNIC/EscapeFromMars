@@ -15,5 +15,6 @@ public class Globals {
     public static StageMarker stageMarker;
 
     public static ManMove     manMove;
+    public static RocketMove  rocketMove;
     public static CameraMove  cameraMove;
 }

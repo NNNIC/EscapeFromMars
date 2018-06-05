@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scene\0000_Common\Scripts\Globals.cs" />
     <Compile Include="Assets\Scene\0000_Common\Scripts\ManMove.cs" />
     <Compile Include="Assets\Scene\0000_Common\Scripts\Parts.cs" />
+    <Compile Include="Assets\Scene\0000_Common\Scripts\RocketMove.cs" />
     <Compile Include="Assets\Scene\0000_Common\Scripts\StageMarker.cs" />
     <Compile Include="Assets\Scene\2000_UI\UI_StartButton.cs" />
     <Compile Include="Assets\Scene\5000_Game\BaseStateMachine.cs" />
