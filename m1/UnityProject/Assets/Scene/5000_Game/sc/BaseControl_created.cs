@@ -165,7 +165,7 @@ public partial class BaseControl : StateManager {
         }
 
         if (!mankind_move_done()) return;
-
+        mankind_hide();
 
         if (!HasNextState())
         {
@@ -210,7 +210,53 @@ public partial class BaseControl : StateManager {
             rocket_launch(100);
         }
 
-        if (!rocket_launch_done()) return;
+
+
+        if (!HasNextState())
+        {
+            SetNextState(S_LAUNCH_WAIT);
+        }
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_LAUNCH_WAIT
+        カメラ待ち
+    */
+    void S_LAUNCH_WAIT(bool bFirst)
+    {
+        if (bFirst)
+        {
+                m_counter=0;
+
+        }
+
+        if (m_counter++<20) return;
+
+
+        if (!HasNextState())
+        {
+            SetNextState(S_LAUNCH_CAM);
+        }
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_LAUNCH_CAM
+        カメラ追っかけ
+    */
+    void S_LAUNCH_CAM(bool bFirst)
+    {
+        if (bFirst)
+        {
+            camera_launch(100);
+        }
+
+        if (!camera_launch_done()) return;
 
 
         if (!HasNextState())

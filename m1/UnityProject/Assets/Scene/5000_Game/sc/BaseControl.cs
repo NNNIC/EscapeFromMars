@@ -40,6 +40,10 @@
     {
         return Globals.manMove.IsMoveDone();
     }
+    void mankind_hide()
+    {
+        Globals.manMove.gameObject.SetActive(false);
+    }
     
     //S_ZOOM_LAUNCH
     void camera_zoom_at_launch(float speed)
@@ -64,9 +68,26 @@
         var goal  = Globals.stageMarker.m_rocket_2.transform.position;
         rm.Move(start,goal,speed);
     }
-    bool rocket_launch_done()
+    //bool rocket_launch_done()
+    //{
+    //    var rm = Globals.rocketMove;
+    //    return rm.IsMoveDone();      
+    //}
+
+    //S_LAUNCH_CAM
+    void camera_launch(float speed)
     {
-        var rm = Globals.rocketMove;
-        return rm.IsMoveDone();      
+        var cm = Globals.cameraMove;
+        var start = Globals.stageMarker.m_camera_1.transform.position;
+        var goal   = Globals.stageMarker.m_camera_2.transform.position;
+
+        cm.Move(start,goal,speed);
     }
+    bool camera_launch_done()
+    {
+        var cm = Globals.cameraMove;
+        return cm.IsMoveDone();
+    }
+
+
 }
