@@ -71,20 +71,37 @@
     <Compile Include="Assets\Scene\0000_Common\Scripts\StageMarker.cs" />
     <Compile Include="Assets\Scene\2000_UI\UI_StartButton.cs" />
     <Compile Include="Assets\Scene\5000_Game\BaseStateMachine.cs" />
-    <Compile Include="Assets\Scene\5000_Game\sc\base\StateManager.cs" />
     <Compile Include="Assets\Scene\5000_Game\sc\BaseControl.cs" />
     <Compile Include="Assets\Scene\5000_Game\sc\BaseControl_created.cs" />
     <Compile Include="Assets\Scene\5000_Game\UIParts.cs" />
+    <Compile Include="Assets\Scene\9000_Test\bg_scroll.cs" />
+    <Compile Include="Assets\Scene\9000_Test\Control.cs" />
+    <Compile Include="Assets\Scene\9000_Test\debri_fire_controll.cs" />
+    <Compile Include="Assets\Scene\9000_Test\debri_move.cs" />
+    <Compile Include="Assets\Scene\9000_Test\rkt_rot.cs" />
+    <Compile Include="Assets\Scene\9000_Test\sc\base\StateManager.cs" />
+    <Compile Include="Assets\Scene\9000_Test\sc\DebriControl.cs" />
+    <Compile Include="Assets\Scene\9000_Test\sc\DebriControl_created.cs" />
+    <Compile Include="Assets\Scene\9000_Test\sc\MainControl.cs" />
+    <Compile Include="Assets\Scene\9000_Test\sc\MainControl_created.cs" />
+    <Compile Include="Assets\Scene\9000_Test\sc\TouchDstControl.cs" />
+    <Compile Include="Assets\Scene\9000_Test\sc\TouchDstControl_created.cs" />
+    <Compile Include="Assets\Scene\9000_Test\stage_1.cs" />
+    <Compile Include="Assets\Scene\9000_Test\stage_2.cs" />
+    <Compile Include="Assets\Scene\9000_Test\test0001.cs" />
+    <Compile Include="Assets\Scene\9000_Test\touch_dst.cs" />
     <Compile Include="Assets\Utilities\Independent\EnumUtil.cs" />
     <Compile Include="Assets\Utilities\Independent\IniUtil.cs" />
     <Compile Include="Assets\Utilities\Independent\ParseUtil.cs" />
     <Compile Include="Assets\Utilities\Independent\PositionUtil.cs" />
+    <Compile Include="Assets\Utilities\Independent\RandomUtil.cs" />
     <Compile Include="Assets\Utilities\Independent\RayUtil.cs" />
     <Compile Include="Assets\Utilities\Independent\ReadResetValue.cs" />
     <Compile Include="Assets\Utilities\Independent\ResourcesUtil.cs" />
     <Compile Include="Assets\Utilities\Independent\ScreenUtil.cs" />
     <Compile Include="Assets\Utilities\Independent\Vector3LineUtil.cs" />
     <Compile Include="Assets\Utilities\Independent\VectorUtil.cs" />
+    <Compile Include="Assets\Utilities\Special\MoveUtil.cs" />
     <Compile Include="Assets\Utilities\Special\NxM_CRT_Mesh.cs" />
     <None Include="Assets\Shaders\OneColor.shader" />
     <None Include="Assets\Scene\5000_Game\doc\Base\templatefunc.txt" />
@@ -92,6 +109,7 @@
     <None Include="Assets\Utilities\dependApp\placeholder.txt" />
     <None Include="Assets\Shaders\Additive Colored.shader" />
     <None Include="Assets\Scene\5000_Game\doc\Base\templatesource.txt" />
+    <None Include="Assets\Data\Frame\UnlitShader.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/gea01/Documents/EscapeFromMars/m1/UnityProject/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

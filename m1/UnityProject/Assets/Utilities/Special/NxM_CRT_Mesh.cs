@@ -51,7 +51,9 @@ public class NxM_CRT_Mesh  {
            o
         */
 
-        var  o = new Vector3(x,  y);
+        var org = new Vector3(- (float)width * 0.5f, -(float)height * 0.5f);
+
+        var  o = org + new Vector3(x,  y);
         var  d = (1.0f - partlen) * 0.5f;
 
         var v0 = o + new Vector3(d,d);
@@ -65,9 +67,13 @@ public class NxM_CRT_Mesh  {
         var i1 = i0 + 1;
         var i2 = i0 + 2;
         var i3 = i0 + 3;
-
-        var tr1 = new int[3] {0,1,3};
-        var tr2 = new int[3] {0,3,2};
+#if r
+        var tr1 = new int[3] {i0,i1,i3};
+        var tr2 = new int[3] {i0,i3,i2};
+#else
+        var tr1 = new int[3] {i0,i3,i1};
+        var tr2 = new int[3] {i0,i2,i3};
+#endif
 
         var ud  = 1.0f / width;
         var udh = ud * 0.5f;

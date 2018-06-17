@@ -18,18 +18,12 @@ public class StateManager
                 m_nextfunc = null;
                 bFirst = true;
             }
-
-            if (bFirst && m_curfunc!=null)
-            {
-                UnityEngine.Debug.Log(m_curfunc.Method.Name);
-            }
-
+            m_noWait = false;
             if (m_curfunc!=null)
             {   
-                m_noWait = false;
                 m_curfunc(bFirst);
-                if (!m_noWait) break;
             }
+            if (!m_noWait) break;
         }
     }
     public void Goto(Action<bool> func)
