@@ -59,21 +59,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scene\0000_Common\Scripts\Boot.cs" />
-    <Compile Include="Assets\Scene\0000_Common\Scripts\Buttons.cs" />
-    <Compile Include="Assets\Scene\0000_Common\Scripts\CameraAdjust.cs" />
-    <Compile Include="Assets\Scene\0000_Common\Scripts\CameraMove.cs" />
-    <Compile Include="Assets\Scene\0000_Common\Scripts\ColorList.cs" />
     <Compile Include="Assets\Scene\0000_Common\Scripts\Globals.cs" />
     <Compile Include="Assets\Scene\0000_Common\Scripts\ManMove.cs" />
     <Compile Include="Assets\Scene\0000_Common\Scripts\Parts.cs" />
     <Compile Include="Assets\Scene\0000_Common\Scripts\RocketMove.cs" />
     <Compile Include="Assets\Scene\0000_Common\Scripts\StageMarker.cs" />
-    <Compile Include="Assets\Scene\2000_UI\UI_StartButton.cs" />
-    <Compile Include="Assets\Scene\5000_Game\BaseStateMachine.cs" />
-    <Compile Include="Assets\Scene\5000_Game\sc\BaseControl.cs" />
-    <Compile Include="Assets\Scene\5000_Game\sc\BaseControl_created.cs" />
-    <Compile Include="Assets\Scene\5000_Game\UIParts.cs" />
     <Compile Include="Assets\Scene\9000_Test\bg_scroll.cs" />
     <Compile Include="Assets\Scene\9000_Test\Control.cs" />
     <Compile Include="Assets\Scene\9000_Test\debri_fire_controll.cs" />
@@ -104,11 +94,9 @@
     <Compile Include="Assets\Utilities\Special\MoveUtil.cs" />
     <Compile Include="Assets\Utilities\Special\NxM_CRT_Mesh.cs" />
     <None Include="Assets\Shaders\OneColor.shader" />
-    <None Include="Assets\Scene\5000_Game\doc\Base\templatefunc.txt" />
     <None Include="Assets\Shaders\Rotate Tex 2 Colors.shader" />
     <None Include="Assets\Utilities\dependApp\placeholder.txt" />
     <None Include="Assets\Shaders\Additive Colored.shader" />
-    <None Include="Assets\Scene\5000_Game\doc\Base\templatesource.txt" />
     <None Include="Assets\Data\Frame\UnlitShader.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/gea01/Documents/EscapeFromMars/m1/UnityProject/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

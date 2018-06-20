@@ -148,6 +148,10 @@ public partial class MainControl : StateManager {
 
 
 
+        if (!HasNextState())
+        {
+            SetNextState(S_WAIT_TIMEOUT);
+        }
         if (HasNextState())
         {
             GoNextState();
@@ -168,7 +172,67 @@ public partial class MainControl : StateManager {
 
         if (!HasNextState())
         {
-            SetNextState(S_SETUP_STAGE2);
+            SetNextState(S_SETUP_STAGE1);
+        }
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_WAIT_TIMEOUT
+        タイムアウトを待つ。死亡時もあり。
+    */
+    void S_WAIT_TIMEOUT(bool bFirst)
+    {
+        if (bFirst)
+        {
+            wait_timer(5000);
+        }
+
+        if (!wait_done_or_over()) return;
+
+        br_timeout(S_SETUP_STAGE3);
+    br_over(S_GAMEOVER);
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_SETUP_STAGE3
+        STAGE3をセットアップ
+    */
+    void S_SETUP_STAGE3(bool bFirst)
+    {
+        if (bFirst)
+        {
+
+        }
+
+
+
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_GAMEOVER
+        new state
+    */
+    void S_GAMEOVER(bool bFirst)
+    {
+        if (bFirst)
+        {
+
+        }
+
+
+
+        if (!HasNextState())
+        {
+            SetNextState(S_SETUP_STAGE1);
         }
         if (HasNextState())
         {

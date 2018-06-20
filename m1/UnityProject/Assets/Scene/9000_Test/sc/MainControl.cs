@@ -119,4 +119,16 @@ public partial class MainControl {
     {
        
     }
+    // S_WAIT_TIMEOUT
+    bool wait_done_or_over()
+    {
+        return false;
+    }
+    void br_timeout(Action<bool> st)
+    {
+        
+    }
+    void br_over(Action<bool> st)
+    {
+    }
 }

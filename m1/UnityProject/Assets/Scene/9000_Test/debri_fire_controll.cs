@@ -19,6 +19,6 @@ public class debri_fire_controll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		m_dc.update();
+		if (m_dc!=null) m_dc.update();
 	}
 }

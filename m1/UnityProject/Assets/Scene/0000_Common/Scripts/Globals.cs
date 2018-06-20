@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Globals {
 
-    public const float deltaTime = 1.0f / 30.0f;   //３０フレーム固定
+    //public const float deltaTime = 1.0f / 30.0f;   //３０フレーム固定
 
     public const float referenceScreenWidth = 640;
     public const float referenceScreenHeight= 1136;
@@ -16,5 +16,5 @@ public class Globals {
 
     public static ManMove     manMove;
     public static RocketMove  rocketMove;
-    public static CameraMove  cameraMove;
+    //public static CameraMove  cameraMove;
 }

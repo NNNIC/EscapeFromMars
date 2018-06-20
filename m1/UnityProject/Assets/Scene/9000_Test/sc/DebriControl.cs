@@ -29,7 +29,7 @@ public partial class DebriControl  {
     void debri_fire()
     {
         var list = m_dfc.m_stage2.m_debris_m;
-        var go = list.Find(i=>i.gameObject.activeSelf==false);
+        var go = listFind();// list.Find(i=>i.gameObject.activeSelf==false);
         if (go==null)
         {
             return;
@@ -40,5 +40,22 @@ public partial class DebriControl  {
         go.transform.position = fp.transform.position;
         var dm = go.GetComponent<debri_move>();
         dm.m_diff = Vector3.down * m_dfc.m_speed;
+    }
+
+    int m_index = 0;
+    GameObject listFind() //Rotation Find!
+    {
+        var list = m_dfc.m_stage2.m_debris_m;
+        for(var i = 0; i<list.Count; i++)
+        {
+            var n = (i + m_index) % list.Count;
+            var o =list[n];
+            if (o.activeSelf==false)
+            {
+                m_index = n;
+                return o;
+            }
+        }
+        return null;
     }
 }

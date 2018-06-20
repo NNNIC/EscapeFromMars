@@ -93,7 +93,7 @@ public partial class TouchDstControl : StateManager {
     {
         if (bFirst)
         {
-            dst_move();
+            dst_move(0.1f);
         }
 
         if (!dst_done()) return;

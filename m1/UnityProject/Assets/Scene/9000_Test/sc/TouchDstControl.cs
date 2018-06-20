@@ -49,7 +49,7 @@ public partial class TouchDstControl  {
     {
         m_move_done = false;
         m_dstmark.transform.position = (Vector3)m_dst_pos;
-        //m_rkt.transform.position     = (Vector3)m_dst_pos;
+        m_dstmark.GetComponent<Renderer>().enabled = true;
         m_mono.StartCoroutine(dst_move_co(speed));
     }
 
@@ -61,8 +61,10 @@ public partial class TouchDstControl  {
             if (len < speed)
             {
                 m_rkt.transform.position = m_dstmark.transform.position;
+                m_dstmark.GetComponent<Renderer>().enabled = false;
+
                 m_move_done = true;
-                break;
+                yield break;
             }
             else
             {
@@ -82,6 +84,6 @@ public partial class TouchDstControl  {
 
     bool dst_done()
     {
-        return true;
+        return m_move_done;
     }
 }

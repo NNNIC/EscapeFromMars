@@ -1,2 +1,2 @@
 cd /d %~dp0
-start "" StateViewer.exe TouchDstControl.xlsx
+start "" PSGGEditor.exe TouchDstControl.xlsx

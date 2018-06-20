@@ -1,2 +1,2 @@
 cd /d %~dp0
-start "" StateViewer.exe DebriControl.xlsx
+start "" PSGGEditor.exe DebriControl.xlsx
