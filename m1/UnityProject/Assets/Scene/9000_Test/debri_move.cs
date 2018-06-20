@@ -13,6 +13,8 @@ public class debri_move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Globals.rocket_crashed) return;
+
 	    transform.position += m_diff;
         if (m_diff.y < 0)
         {

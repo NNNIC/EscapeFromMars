@@ -26,9 +26,17 @@ public partial class DebriControl  {
     }
     bool timer_done() { return m_timer_done;}
 
+    void br_Over(Action<bool> st)
+    {
+        if (Globals.rocket_crashed)
+        {
+            SetNextState(st);
+        }
+    }
+
     void debri_fire()
     {
-        var list = m_dfc.m_stage2.m_debris_m;
+        //var list = m_dfc.m_stage2.m_debris_m;
         var go = listFind();// list.Find(i=>i.gameObject.activeSelf==false);
         if (go==null)
         {

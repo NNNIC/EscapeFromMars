@@ -16,6 +16,9 @@ public class bg_scroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Globals.rocket_crashed) return;
+
         m_yoffset += m_diff;
         if (m_yoffset > 1) m_yoffset -= 1;
         m_rend.material.SetTextureOffset("_MainTex", Vector2.up * m_yoffset);

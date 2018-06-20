@@ -5,8 +5,11 @@ using System;
 
 public partial class MainControl {
 
+    public Control m_control;
     public Camera  m_maincamper;
     public Camera  m_maincamort;
+    public GameObject m_fadeort;
+    public GameObject m_gameover;
     public stage_1 m_stage_1;
     public stage_2 m_stage_2;
 
@@ -18,6 +21,7 @@ public partial class MainControl {
     // S_SETUP
     void stage_1_set()
     {
+        Globals.rocket_crashed = false;
         m_stage_1.gameObject.SetActive(true);
     }
     void camper_set()
@@ -35,7 +39,7 @@ public partial class MainControl {
     void wait_timer(float sec)
     {
         m_timer_done = false;
-        m_stage_1.StartCoroutine(wait_timer_co(sec));
+        m_control.StartCoroutine(wait_timer_co(sec));
     }
     IEnumerator wait_timer_co(float sec)
     {
@@ -51,7 +55,7 @@ public partial class MainControl {
     void cam_move_t1(float t)
     {
         m_cam_done = false;
-        m_stage_1.StartCoroutine(MoveUtil.MoveLarp(m_maincamper.gameObject, m_stage_1.m_camera_0001,m_stage_1.m_camera_0002, t, ()=> { m_cam_done = true; }));
+        m_control.StartCoroutine(MoveUtil.MoveLarp(m_maincamper.gameObject, m_stage_1.m_camera_0001,m_stage_1.m_camera_0002, t, ()=> { m_cam_done = true; }));
     }
     bool cam_move_t1_done()
     {
@@ -62,7 +66,7 @@ public partial class MainControl {
     void rkt_launch()
     {
         m_rkt_done = false;
-        m_stage_1.StartCoroutine(rkt_launch_co());
+        m_control.StartCoroutine(rkt_launch_co());
     }
     IEnumerator rkt_launch_co()
     {
@@ -120,15 +124,43 @@ public partial class MainControl {
        
     }
     // S_WAIT_TIMEOUT
-    bool wait_done_or_over()
+    float m_timer;
+    bool m_timeout;
+    void timer_reset()
     {
+        m_timeout = false;
+        m_timer = 0;
+    }
+    void timer_update()
+    {
+        m_timer += Time.deltaTime;
+    }
+    bool wait_timerdone_or_over(float time)
+    {
+        if (Globals.rocket_crashed)
+        {
+            m_fadeort.SetActive(true);
+            m_gameover.SetActive(true);
+            return true;
+        }
+        if (m_timer > time) {
+            m_timeout = true;
+            return true;
+        }
         return false;
     }
     void br_timeout(Action<bool> st)
     {
-        
+        if (m_timeout)
+        {
+            SetNextState(st);
+        }
     }
     void br_over(Action<bool> st)
     {
+        if (Globals.rocket_crashed)
+        {
+            SetNextState(st);
+        }
     }
 }

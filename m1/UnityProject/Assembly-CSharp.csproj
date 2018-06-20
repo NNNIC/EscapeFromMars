@@ -59,19 +59,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scene\0000_Common\Scripts\Globals.cs" />
-    <Compile Include="Assets\Scene\0000_Common\Scripts\ManMove.cs" />
-    <Compile Include="Assets\Scene\0000_Common\Scripts\Parts.cs" />
-    <Compile Include="Assets\Scene\0000_Common\Scripts\RocketMove.cs" />
-    <Compile Include="Assets\Scene\0000_Common\Scripts\StageMarker.cs" />
     <Compile Include="Assets\Scene\9000_Test\bg_scroll.cs" />
     <Compile Include="Assets\Scene\9000_Test\Control.cs" />
     <Compile Include="Assets\Scene\9000_Test\debri_fire_controll.cs" />
     <Compile Include="Assets\Scene\9000_Test\debri_move.cs" />
+    <Compile Include="Assets\Scene\9000_Test\Globals.cs" />
     <Compile Include="Assets\Scene\9000_Test\rkt_rot.cs" />
     <Compile Include="Assets\Scene\9000_Test\sc\base\StateManager.cs" />
     <Compile Include="Assets\Scene\9000_Test\sc\DebriControl.cs" />
     <Compile Include="Assets\Scene\9000_Test\sc\DebriControl_created.cs" />
+    <Compile Include="Assets\Scene\9000_Test\sc\GameOver.cs" />
     <Compile Include="Assets\Scene\9000_Test\sc\MainControl.cs" />
     <Compile Include="Assets\Scene\9000_Test\sc\MainControl_created.cs" />
     <Compile Include="Assets\Scene\9000_Test\sc\TouchDstControl.cs" />

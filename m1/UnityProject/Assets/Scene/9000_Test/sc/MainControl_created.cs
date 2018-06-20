@@ -172,7 +172,7 @@ public partial class MainControl : StateManager {
 
         if (!HasNextState())
         {
-            SetNextState(S_SETUP_STAGE1);
+            SetNextState(S_SETUP_STAGE2);
         }
         if (HasNextState())
         {
@@ -187,13 +187,14 @@ public partial class MainControl : StateManager {
     {
         if (bFirst)
         {
-            wait_timer(5000);
+            timer_reset();
         }
+        timer_update();
+        if (!wait_timerdone_or_over(15)) return;
 
-        if (!wait_done_or_over()) return;
+        br_over(S_GAMEOVER);
+    br_timeout(S_SETUP_STAGE3);
 
-        br_timeout(S_SETUP_STAGE3);
-    br_over(S_GAMEOVER);
         if (HasNextState())
         {
             GoNextState();
@@ -230,10 +231,6 @@ public partial class MainControl : StateManager {
 
 
 
-        if (!HasNextState())
-        {
-            SetNextState(S_SETUP_STAGE1);
-        }
         if (HasNextState())
         {
             GoNextState();

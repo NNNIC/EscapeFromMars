@@ -75,7 +75,7 @@ public partial class DebriControl : StateManager {
 
         if (!timer_done()) return;
 
-
+        br_Over(S_END);
         if (!HasNextState())
         {
             SetNextState(S_FIRE);

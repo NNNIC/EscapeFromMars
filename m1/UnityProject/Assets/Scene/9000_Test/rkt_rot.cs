@@ -13,6 +13,7 @@ public class rkt_rot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Globals.rocket_crashed) return;
 		transform.Rotate(Vector3.up * m_diff);
 	}
 
@@ -23,7 +24,8 @@ public class rkt_rot : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+        Globals.rocket_crashed = true;
+        //Debug.Log(other.gameObject.name);
     }
 
 }

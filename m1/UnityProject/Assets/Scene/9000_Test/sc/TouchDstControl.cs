@@ -57,6 +57,7 @@ public partial class TouchDstControl  {
     {
         while(true)
         {
+            if (Globals.rocket_crashed) yield break;
             var len = (m_rkt.transform.position -  m_dstmark.transform.position).magnitude;
             if (len < speed)
             {
