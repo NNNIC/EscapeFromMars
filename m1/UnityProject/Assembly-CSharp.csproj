@@ -95,11 +95,11 @@
     <None Include="Assets\Utilities\dependApp\placeholder.txt" />
     <None Include="Assets\Shaders\Additive Colored.shader" />
     <None Include="Assets\Data\Frame\UnlitShader.shader" />
-    <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/gea01/Documents/EscapeFromMars/m1/UnityProject/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/gea01/Documents/EscapeFromMars/m1/UnityProject/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/gea01/Documents/psgg/samples/EscapeFromMars/m1/UnityProject/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.StandardEvents">
+      <HintPath>C:/Users/gea01/Documents/psgg/samples/EscapeFromMars/m1/UnityProject/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity2018.1.2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
