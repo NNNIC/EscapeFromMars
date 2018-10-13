@@ -1,4 +1,4 @@
-﻿// psggConverterLib.dll converted from MainControl.xlsx. 
+﻿//  psggConverterLib.dll converted from MainControl.xlsx. 
 public partial class MainControl : StateManager {
 
     public void Start()
@@ -8,17 +8,37 @@ public partial class MainControl : StateManager {
 
 
     /*
-        S_START
-        開始
+        S_CAM_T1
+        カメラを発射正面へ
     */
-    void S_START(bool bFirst)
+    void S_CAM_T1(bool bFirst)
+    {
+        if (bFirst)
+        {
+            cam_move_t1(5);
+        }
+        if (!cam_move_t1_done()) return;
+        if (!HasNextState())
+        {
+            SetNextState(S_LAUNCHSTART);
+        }
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_DEBUG
+        デバッグ用
+    */
+    void S_DEBUG(bool bFirst)
     {
         if (bFirst)
         {
         }
         if (!HasNextState())
         {
-            SetNextState(S_SETUP_STAGE1);
+            SetNextState(S_SETUP_STAGE2);
         }
         if (HasNextState())
         {
@@ -40,19 +60,13 @@ public partial class MainControl : StateManager {
         }
     }
     /*
-        S_WAIT
-        ３秒待ち
+        S_GAMEOVER
+        new state
     */
-    void S_WAIT(bool bFirst)
+    void S_GAMEOVER(bool bFirst)
     {
         if (bFirst)
         {
-            wait_timer(3);
-        }
-        if (!wait_timer_done()) return;
-        if (!HasNextState())
-        {
-            SetNextState(S_CAM_T1);
         }
         if (HasNextState())
         {
@@ -60,19 +74,19 @@ public partial class MainControl : StateManager {
         }
     }
     /*
-        S_CAM_T1
-        カメラを発射正面へ
+        S_LAUNCHSTART
+        発射スタート
     */
-    void S_CAM_T1(bool bFirst)
+    void S_LAUNCHSTART(bool bFirst)
     {
         if (bFirst)
         {
-            cam_move_t1(5);
+            rkt_launch();
         }
-        if (!cam_move_t1_done()) return;
+        if (!rkt_launch_done()) return;
         if (!HasNextState())
         {
-            SetNextState(S_LAUNCHSTART);
+            SetNextState(S_SETUP_STAGE2);
         }
         if (HasNextState())
         {
@@ -101,26 +115,6 @@ public partial class MainControl : StateManager {
         }
     }
     /*
-        S_LAUNCHSTART
-        発射スタート
-    */
-    void S_LAUNCHSTART(bool bFirst)
-    {
-        if (bFirst)
-        {
-            rkt_launch();
-        }
-        if (!rkt_launch_done()) return;
-        if (!HasNextState())
-        {
-            SetNextState(S_SETUP_STAGE2);
-        }
-        if (HasNextState())
-        {
-            GoNextState();
-        }
-    }
-    /*
         S_SETUP_STAGE2
         STAGE2をセットアップ
     */
@@ -142,17 +136,51 @@ public partial class MainControl : StateManager {
         }
     }
     /*
-        S_DEBUG
-        デバッグ用
+        S_SETUP_STAGE3
+        STAGE3をセットアップ
     */
-    void S_DEBUG(bool bFirst)
+    void S_SETUP_STAGE3(bool bFirst)
+    {
+        if (bFirst)
+        {
+        }
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_START
+        開始
+    */
+    void S_START(bool bFirst)
     {
         if (bFirst)
         {
         }
         if (!HasNextState())
         {
-            SetNextState(S_SETUP_STAGE2);
+            SetNextState(S_SETUP_STAGE1);
+        }
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_WAIT
+        ３秒待ち
+    */
+    void S_WAIT(bool bFirst)
+    {
+        if (bFirst)
+        {
+            wait_timer(3);
+        }
+        if (!wait_timer_done()) return;
+        if (!HasNextState())
+        {
+            SetNextState(S_CAM_T1);
         }
         if (HasNextState())
         {
@@ -173,34 +201,6 @@ public partial class MainControl : StateManager {
         if (!wait_timerdone_or_over(15)) return;
         br_over(S_GAMEOVER);
         br_timeout(S_SETUP_STAGE3);
-        if (HasNextState())
-        {
-            GoNextState();
-        }
-    }
-    /*
-        S_SETUP_STAGE3
-        STAGE3をセットアップ
-    */
-    void S_SETUP_STAGE3(bool bFirst)
-    {
-        if (bFirst)
-        {
-        }
-        if (HasNextState())
-        {
-            GoNextState();
-        }
-    }
-    /*
-        S_GAMEOVER
-        new state
-    */
-    void S_GAMEOVER(bool bFirst)
-    {
-        if (bFirst)
-        {
-        }
         if (HasNextState())
         {
             GoNextState();

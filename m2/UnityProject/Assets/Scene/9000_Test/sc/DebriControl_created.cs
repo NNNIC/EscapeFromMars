@@ -1,4 +1,4 @@
-﻿// psggConverterLib.dll converted from DebriControl.xlsx. 
+﻿//  psggConverterLib.dll converted from DebriControl.xlsx. 
 public partial class DebriControl : StateManager {
 
     public void Start()
@@ -8,24 +8,6 @@ public partial class DebriControl : StateManager {
 
 
     /*
-        S_START
-        開始
-    */
-    void S_START(bool bFirst)
-    {
-        if (bFirst)
-        {
-        }
-        if (!HasNextState())
-        {
-            SetNextState(S_INIT);
-        }
-        if (HasNextState())
-        {
-            GoNextState();
-        }
-    }
-    /*
         S_END
         終了
     */
@@ -33,6 +15,25 @@ public partial class DebriControl : StateManager {
     {
         if (bFirst)
         {
+        }
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
+        S_FIRE
+        デブリ発射
+    */
+    void S_FIRE(bool bFirst)
+    {
+        if (bFirst)
+        {
+            debri_fire();
+        }
+        if (!HasNextState())
+        {
+            SetNextState(S_WAIT);
         }
         if (HasNextState())
         {
@@ -58,6 +59,24 @@ public partial class DebriControl : StateManager {
         }
     }
     /*
+        S_START
+        開始
+    */
+    void S_START(bool bFirst)
+    {
+        if (bFirst)
+        {
+        }
+        if (!HasNextState())
+        {
+            SetNextState(S_INIT);
+        }
+        if (HasNextState())
+        {
+            GoNextState();
+        }
+    }
+    /*
         S_WAIT
         待ち
     */
@@ -72,25 +91,6 @@ public partial class DebriControl : StateManager {
         if (!HasNextState())
         {
             SetNextState(S_FIRE);
-        }
-        if (HasNextState())
-        {
-            GoNextState();
-        }
-    }
-    /*
-        S_FIRE
-        デブリ発射
-    */
-    void S_FIRE(bool bFirst)
-    {
-        if (bFirst)
-        {
-            debri_fire();
-        }
-        if (!HasNextState())
-        {
-            SetNextState(S_WAIT);
         }
         if (HasNextState())
         {
