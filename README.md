@@ -15,7 +15,7 @@ SYN-G-GEN http://syn-g-gen.com
 
 ## TouchDstControl
 
-![](https://raw.githubusercontent.com/NNNIC/EscapeFromMars/master/wiki/TouchDstControl.png)
+![](https://raw.githubusercontent.com/NNNIC/EscapeFromMars/master/wiki/TouchDstControl.PNG)
 
 ## DebriControl
 
