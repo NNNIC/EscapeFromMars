@@ -1,11 +1,11 @@
 # psgg-c-sample
-SYN-G-GEN Unity Sample
+StateGo Unity Sample
 
 # Environment
 
 Windows  
 Unity  
-SYN-G-GEN http://syn-g-gen.com
+StateGo https://statego.programanic.com
 
 # State machines
 
