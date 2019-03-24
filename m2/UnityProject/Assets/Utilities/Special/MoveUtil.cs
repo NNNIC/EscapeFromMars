@@ -7,7 +7,8 @@ public class MoveUtil  {
 
     public static IEnumerator MoveLarp(GameObject obj, GameObject start, GameObject goal, float t, Action cb)
     {
-        var count = t * Application.targetFrameRate;
+        var f = Application.targetFrameRate > 0 ? Application.targetFrameRate : 30;
+        var count = t * f;
         for(var i =0; i<=count; i++)
         {
             var pos = Vector3.Lerp(start.transform.position, goal.transform.position, (float)i/count);
