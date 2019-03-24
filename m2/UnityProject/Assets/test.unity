@@ -1184,7 +1184,6 @@ GameObject:
   - component: {fileID: 799393577}
   - component: {fileID: 799393576}
   - component: {fileID: 799393575}
-  - component: {fileID: 799393578}
   - component: {fileID: 799393579}
   m_Layer: 0
   m_Name: touch_dst
@@ -1260,21 +1259,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 799393573}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &799393578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 799393573}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fabe4141810af241a316a0ac69db6e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_cam: {fileID: 1113039432}
-  m_ort: {fileID: 1375515689}
-  m_tex: {fileID: 8400000, guid: 8e2279cd9461fae43881313eeb211c3f, type: 2}
-  m_rocket: {fileID: 174873260}
 --- !u!114 &799393579
 MonoBehaviour:
   m_ObjectHideFlags: 0
