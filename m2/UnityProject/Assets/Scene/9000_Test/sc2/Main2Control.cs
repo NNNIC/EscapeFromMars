@@ -5,6 +5,8 @@ using UnityEngine;
 
 public partial class Main2Control : MonoBehaviour {
  
+    public effect_smoke m_efsmoke;
+
     #region manager
     Action<bool> m_curfunc;
     Action<bool> m_nextfunc;
@@ -129,7 +131,7 @@ public partial class Main2Control : MonoBehaviour {
             //
             if (!HasNextState())
             {
-                Goto(S_SETUP_STAGE2);
+                Goto(S_STOP_SMOKE);
             }
         }
         /*
@@ -147,7 +149,7 @@ public partial class Main2Control : MonoBehaviour {
             //
             if (!HasNextState())
             {
-                Goto(S_WAIT);
+                Goto(S_START_SMOKE);
             }
         }
         /*
@@ -184,6 +186,38 @@ public partial class Main2Control : MonoBehaviour {
             if (!HasNextState())
             {
                 Goto(S_SETUP_STAGE1);
+            }
+        }
+        /*
+            S_START_SMOKE
+            煙を開始
+        */
+        void S_START_SMOKE(bool bFirst)
+        {
+            if (bFirst)
+            {
+                m_efsmoke.Kick(); //煙
+            }
+            //
+            if (!HasNextState())
+            {
+                Goto(S_WAIT);
+            }
+        }
+        /*
+            S_STOP_SMOKE
+            煙を停止
+        */
+        void S_STOP_SMOKE(bool bFirst)
+        {
+            if (bFirst)
+            {
+                m_efsmoke.Stop(); //煙
+            }
+            //
+            if (!HasNextState())
+            {
+                Goto(S_SETUP_STAGE2);
             }
         }
         /*
@@ -320,6 +354,7 @@ public partial class Main2Control : MonoBehaviour {
 
             yield return null;
         }
+
         m_rkt_done = true;
     }
     bool rkt_launch_done() { return m_rkt_done;}

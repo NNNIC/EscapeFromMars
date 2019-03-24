@@ -11,4 +11,9 @@ public class stage_1 : MonoBehaviour {
     public GameObject m_r_1;
 
 
+    private void Start()
+    {
+        Globals.stage1_rocket = m_rocket;
+    }
+
 }
