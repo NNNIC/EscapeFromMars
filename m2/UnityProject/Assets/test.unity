@@ -1185,6 +1185,7 @@ GameObject:
   - component: {fileID: 799393576}
   - component: {fileID: 799393575}
   - component: {fileID: 799393578}
+  - component: {fileID: 799393579}
   m_Layer: 0
   m_Name: touch_dst
   m_TagString: Untagged
@@ -1265,7 +1266,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 799393573}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fabe4141810af241a316a0ac69db6e1, type: 3}
   m_Name: 
@@ -1274,6 +1275,28 @@ MonoBehaviour:
   m_ort: {fileID: 1375515689}
   m_tex: {fileID: 8400000, guid: 8e2279cd9461fae43881313eeb211c3f, type: 2}
   m_rocket: {fileID: 174873260}
+--- !u!114 &799393579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799393573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331d3095954e6c247bd75e930ee298cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_touchcam: {fileID: 1113039432}
+  m_orhcam: {fileID: 1375515689}
+  m_dstmark: {fileID: 799393573}
+  m_rkt: {fileID: 174873260}
+  m_tex: {fileID: 8400000, guid: 8e2279cd9461fae43881313eeb211c3f, type: 2}
+  m_dst_speed: 10
+  m_screen_width: 0
+  m_screen_height: 0
+  m_width: 0
+  m_height: 0
+  m_mono: {fileID: 0}
 --- !u!1 &868433373
 GameObject:
   m_ObjectHideFlags: 0

@@ -379,30 +379,6 @@ public partial class Main2Control : MonoBehaviour {
         }
     }
 
-	bool m_bYesNo;
-	
-	void br_YES(Action<bool> st)
-	{
-		if (!HasNextState())
-		{
-			if (m_bYesNo)
-			{
-				Goto(st);
-			}
-		}
-	}
-
-	void br_NO(Action<bool> st)
-	{
-		if (!HasNextState())
-		{
-			if (!m_bYesNo)
-			{
-				Goto(st);
-			}
-		}
-	}
-
     #region Monobehaviour framework
     void Start()
     {
