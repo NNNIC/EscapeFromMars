@@ -9,4 +9,9 @@ public class stage_2 : MonoBehaviour {
     public List<GameObject> m_debris_m;
     public List<GameObject> m_ftops;
 
+    private void Start()
+    {
+        Globals.stage2_rocket = m_rockst;
+    }
+
 }

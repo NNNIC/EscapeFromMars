@@ -5,7 +5,8 @@ using UnityEngine;
 
 public partial class Main2Control : MonoBehaviour {
  
-    public effect_smoke m_efsmoke;
+    public effect_smoke  m_efsmoke;
+    public effect_smoke2 m_efsmoke2;
 
     #region manager
     Action<bool> m_curfunc;
@@ -167,7 +168,7 @@ public partial class Main2Control : MonoBehaviour {
             //
             if (!HasNextState())
             {
-                Goto(S_WAIT_TIMEOUT);
+                Goto(S_START_SMOKE1);
             }
         }
         /*
@@ -176,6 +177,10 @@ public partial class Main2Control : MonoBehaviour {
         */
         void S_SETUP_STAGE3(bool bFirst)
         {
+            if (bFirst)
+            {
+                Debug.Log("STATE3 has not been implemented yet");
+            }
         }
         /*
             S_START
@@ -205,6 +210,22 @@ public partial class Main2Control : MonoBehaviour {
             }
         }
         /*
+            S_START_SMOKE1
+            煙開始
+        */
+        void S_START_SMOKE1(bool bFirst)
+        {
+            if (bFirst)
+            {
+                m_efsmoke2.Kick();
+            }
+            //
+            if (!HasNextState())
+            {
+                Goto(S_WAIT_TIMEOUT);
+            }
+        }
+        /*
             S_STOP_SMOKE
             煙を停止
         */
@@ -218,6 +239,36 @@ public partial class Main2Control : MonoBehaviour {
             if (!HasNextState())
             {
                 Goto(S_SETUP_STAGE2);
+            }
+        }
+        /*
+            S_STOP_SMOKE1
+        */
+        void S_STOP_SMOKE1(bool bFirst)
+        {
+            if (bFirst)
+            {
+                m_efsmoke2.Stop();
+            }
+            //
+            if (!HasNextState())
+            {
+                Goto(S_SETUP_STAGE3);
+            }
+        }
+        /*
+            S_STOP_SMOKE2
+        */
+        void S_STOP_SMOKE2(bool bFirst)
+        {
+            if (bFirst)
+            {
+                m_efsmoke2.Stop();
+            }
+            //
+            if (!HasNextState())
+            {
+                Goto(S_GAMEOVER);
             }
         }
         /*
@@ -250,8 +301,8 @@ public partial class Main2Control : MonoBehaviour {
             timer_update();
             if (!wait_timerdone_or_over(15)) return;
             // branch
-            if (Globals.rocket_crashed) { Goto( S_GAMEOVER ); }
-            else if (m_timeout) { Goto( S_SETUP_STAGE3 ); }
+            if (Globals.rocket_crashed) { Goto( S_STOP_SMOKE2 ); }
+            else if (m_timeout) { Goto( S_STOP_SMOKE1 ); }
         }
 
 
