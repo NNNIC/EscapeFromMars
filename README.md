@@ -5,7 +5,7 @@ StateGo Unity Sample
 
 Windows  
 Unity  
-StateGo https://statego.programanic.com
+[StateGo](https://statego.programanic.com/index-e.html)
 
 # State machines
 
