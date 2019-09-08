@@ -72,7 +72,7 @@ public partial class Debri2Control : MonoBehaviour {
     }
 
 	#region    // [PSGG OUTPUT START] indent(4) $/./$
-//  psggConverterLib.dll converted from Debri2Control.xlsx. 
+//  psggConverterLib.dll converted from Debri2Control.xlsx.    psgg-file:doc\Debri2Control.psgg
     /*
         S_END
     */
