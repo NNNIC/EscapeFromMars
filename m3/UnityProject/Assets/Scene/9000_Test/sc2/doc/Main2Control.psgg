@@ -1,3 +1,784 @@
-﻿; PSGG Editor Shortcut file
-version=1.0
+﻿;PSGG Editor Backup File
+version=1.1
 file=Main2Control.xlsx
+guid=aa5a9627-5716-45d9-85b1-a9f2b452d288
+;set read_from  excel or psgg
+read_from=psgg
+;set savemode with_excel or psgg_only
+save_mode=psgg_only
+;set check_excel_writable yes or no
+check_excel_writable=no
+
+------#======*<Guid(D13821FE-FA27-4B04-834C-CEC1E5670F48)>*======#------
+
+sheet=state-chart
+nameid_list=,n001,n002,n003,n004,n005,n006,,n007,,n008,,n009,n00a,n00b,n00c,,n00d,n00e,,n00f,n010,,n011,n012,,n013,n014,,n015,n016,n017,n018,,n019,n01a,n01b
+stateid_list=,,,,s0001,s0002,s0003,s0004,s0005,s0006,s0007,s0008,s0009,s000a,s000b,s000c,s000d,s000e,s000f,s0010
+max_name_id=27
+max_state_id=16
+[id_name_dic]
+n001=thumbnail
+n002=state
+n003=state-cmt
+n004=state-ref
+n005=basestate
+n006=nextstate
+n007=embed
+n008=members
+n009=vars
+n00a=init
+n00b=init-cmt
+n00c=init-ref
+n00d=update
+n00e=update-cmt
+n00f=wait
+n010=wait-cmt
+n011=post_wait
+n012=post_wait-cmt
+n013=gosubstate
+n014=return
+n015=branch
+n016=branch-cmt
+n017=brcond
+n018=nowait
+n019=!dir
+n01a=!pos
+n01b=!uuid
+
+
+[id_state_dic]
+s0001=S_START
+s0002=S_END
+s0003=S_CAM_T1
+s0004=S_WAIT
+s0005=S_SETUP_STAGE3
+s0006=S_SETUP_STAGE2
+s0007=S_SETUP_STAGE1
+s0008=S_WAIT_TIMEOUT
+s0009=S_LAUNCHSTART
+s000a=S_DEBUG
+s000b=S_GAMEOVER
+s000c=S_START_SMOKE
+s000d=S_STOP_SMOKE
+s000e=S_START_SMOKE1
+s000f=S_STOP_SMOKE1
+s0010=S_STOP_SMOKE2
+
+
+[s0001]
+n002=S_START
+n006=S_SETUP_STAGE1
+n01a=50,100
+n01b=100001
+
+[s0002]
+n002=S_END
+n01a=769,99
+n01b=100002
+
+[s0003]
+n001=(bitmap)
+n002=S_CAM_T1
+n003=カメラを発射正面へ
+n006=S_LAUNCHSTART
+n00a=cam_move_t1(5);
+n00f=!cam_move_t1_done()
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=918,195
+n01b=100003
+
+[s0004]
+n001=(bitmap)
+n002=S_WAIT
+n003=３秒待ち
+n006=S_CAM_T1
+n00a=wait_timer(3);
+n00f=!wait_timer_done()
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=678,192
+n01b=100004
+
+[s0005]
+n001=(bitmap)
+n002=S_SETUP_STAGE3
+n003=STAGE3をセットアップ
+n00a=@@@
+Debug.Log("STATE3 has not been implemented yet");
+@@@
+
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=1532,855
+n01b=100005
+
+[s0006]
+n002=S_SETUP_STAGE2
+n003=STAGE2をセットアップ
+n006=S_START_SMOKE1
+n00a=@@@
+stage_2_set();
+camort_set();
+cam_set_o1();
+@@@
+
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=657,545
+n01b=100006
+
+[s0007]
+n002=S_SETUP_STAGE1
+n003=STAGE1セットアップ
+n006=S_START_SMOKE
+n00a=@@@
+stage_1_set();
+camper_set();
+cam_set_t0();
+@@@
+
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=259,197
+n01b=100007
+
+[s0008]
+n001=(bitmap)
+n002=S_WAIT_TIMEOUT
+n003=タイムアウトを待つ。死亡時もあり。
+n00a=timer_reset();
+n00d=timer_update();
+n00f=!wait_timerdone_or_over(15)
+n015=@@@
+brifc(S_STOP_SMOKE2);
+brelseif(S_STOP_SMOKE1);
+@@@
+
+n016=@@@
+?
+?
+@@@
+
+n017=@@@
+Globals.rocket_crashed
+m_timeout
+@@@
+
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=1106,554
+n01b=100008
+
+[s0009]
+n001=(bitmap)
+n002=S_LAUNCHSTART
+n003=発射スタート
+n006=S_STOP_SMOKE
+n00a=rkt_launch();
+n00f=!rkt_launch_done()
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=1189,204
+n01b=100009
+
+[s000a]
+n002=S_DEBUG
+n003=デバッグ用
+n006=S_SETUP_STAGE2
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=340,549
+n01b=100010
+
+[s000b]
+n002=S_GAMEOVER
+n003=new state
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=1525,591
+n01b=100011
+
+[s000c]
+n001=(bitmap)
+n002=S_START_SMOKE
+n003=煙を開始
+n006=S_WAIT
+n00a=m_efsmoke.Kick(); //煙
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=467,190
+n01b=100012
+
+[s000d]
+n001=(bitmap)
+n002=S_STOP_SMOKE
+n003=煙を停止
+n006=S_SETUP_STAGE2
+n00a=m_efsmoke.Stop(); //煙
+n019=@@@
+/
+(0,0)
+
+@@@
+
+n01a=390,378
+n01b=100013
+
+[s000e]
+n001=(bitmap)
+n002=S_START_SMOKE1
+n003=煙開始
+n006=S_WAIT_TIMEOUT
+n00a=m_efsmoke2.Kick();
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=871,547
+n01b=100014
+
+[s000f]
+n001=(bitmap)
+n002=S_STOP_SMOKE1
+n005=S_STOP_SMOKE2
+n006=S_SETUP_STAGE3
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1319,848
+n01b=100015
+
+[s0010]
+n001=(bitmap)
+n002=S_STOP_SMOKE2
+n006=S_GAMEOVER
+n00a=m_efsmoke2.Stop();
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1315,548
+n01b=100016
+
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=config
+
+###VARIOUS-CONTENTS-BEGIN###
+; The setting was created automatically. 2019/09/09 15:57:38
+; * pssgEditor version : 0.55.51749.19871d29d4e76a30e90d826bf5e64a4d434e1135
+psggfile=@@@
+Main2Control.psgg
+@@@
+xlsfile=@@@
+Main2Control.xlsx
+@@@
+guid=@@@
+aa5a9627-5716-45d9-85b1-a9f2b452d288
+@@@
+bitmap_width=5000
+bitmap_height=2000
+c_statec_cmt=1
+c_thumbnail=1
+c_contents=1
+force_display_outpin=0
+last_action=@@@
+Initilized
+@@@
+target_pathdir=@@@
+/
+@@@
+state_location_list=@@@
+
+@@@
+nodegroup_comment_list=@@@
+[{"Key":"\/","Value":""}]
+@@@
+nodegroup_pos_list=@@@
+[{"Key":"\/","Value":{"x":0,"y":0}}]
+@@@
+fillter_state_location_list=@@@
+[{"Key":"\/","Value":[{"Key":"S_START","Value":{"x":50,"y":100}},{"Key":"S_END","Value":{"x":769,"y":99}},{"Key":"S_CAM_T1","Value":{"x":918,"y":195}},{"Key":"S_WAIT","Value":{"x":678,"y":192}},{"Key":"S_SETUP_STAGE3","Value":{"x":1532,"y":855}},{"Key":"S_SETUP_STAGE2","Value":{"x":657,"y":545}},{"Key":"S_SETUP_STAGE1","Value":{"x":259,"y":197}},{"Key":"S_WAIT_TIMEOUT","Value":{"x":1106,"y":554}},{"Key":"S_LAUNCHSTART","Value":{"x":1189,"y":204}},{"Key":"S_DEBUG","Value":{"x":340,"y":549}},{"Key":"S_GAMEOVER","Value":{"x":1525,"y":591}},{"Key":"S_START_SMOKE","Value":{"x":467,"y":190}},{"Key":"S_STOP_SMOKE","Value":{"x":390,"y":378}},{"Key":"S_START_SMOKE1","Value":{"x":871,"y":547}},{"Key":"S_STOP_SMOKE2","Value":{"x":1315,"y":548}},{"Key":"S_STOP_SMOKE1","Value":{"x":1319,"y":848}}]}]
+@@@
+linecolor_data=@@@
+[{"color":{"knownColor":0,"name":null,"state":2,"value":4285493103},"pattern":"BACKTO_"}]
+@@@
+use_external_command=0
+external_command=@@@
+
+@@@
+source_editor=@@@
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe" /Edit %1
+@@@
+source_editor_vs2015_support=1
+label_show=0
+label_text=@@@
+test
+@@@
+option_delete_thisstring=1
+option_delete_br_string=1
+option_delete_bracket_string=1
+option_delete_s_state_string=1
+option_copy_output_to_clipboard=0
+option_convert_with_confirm=0
+option_ignore_case_of_state=0
+option_editbranch_automode=0
+option_omit_basestate_string=1
+option_hide_basestate_contents=0
+option_hide_branchcmt_onbranchbox=0
+font_name=@@@
+MS UI Gothic
+@@@
+font_size=11
+comment_font_size=0
+contents_font_size=0
+state_width=140
+state_height=20
+comment_block_height=4
+content_max_height=200
+comment_block_fixed=0
+line_space=-1
+userbutton_title=@@@
+
+@@@
+userbutton_command=@@@
+
+@@@
+userbutton_callafterconvert=0
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-source
+
+###VARIOUS-CONTENTS-BEGIN###
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-statefunc
+
+###VARIOUS-CONTENTS-BEGIN###
+<<<?state/^C_/
+eof>>>
+/*
+    [[state]]
+    [[state-cmt]]
+*/
+<<<?state/^E_/
+
+[[embed]]
+
+eof>>>
+[[members]]
+void [[state]](bool bFirst)
+{
+
+    [[vars]]
+
+    <<<?init
+    if (bFirst)
+    {
+        [[init]]
+    }
+    >>>
+
+    [[update]]
+
+    <<<?wait
+    if ([[wait]]) return;
+    >>>
+
+    [[post_wait]]
+
+<<<?gosubstate
+    GoSubState([[gosubstate]],[[nextstate]]);
+    NoWait();
+}
+eof>>>
+
+<<<?return
+    ReturnState();
+    NoWait();
+}
+eof>>>
+
+    <<<?branch
+    // branch
+    [[branch]]
+    >>>
+
+    <<<?nextstate
+    //
+    if (!HasNextState())
+    {
+        Goto([[nextstate]]);
+    }
+    >>>
+
+    <<<?nowait
+    //
+    if (HasNextState())
+    {
+        NoWait();
+    }
+    >>>
+}
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=setting.ini
+
+###VARIOUS-CONTENTS-BEGIN###
+[setting]
+
+psgg=Main2Control.psgg
+xls=Main2Control.xlsx
+sub_src=
+gen_src=Main2Control.cs
+
+manager_src=
+manager_dir=
+
+template_src=
+template_func=template-statefunc.txt
+
+help=help.ini
+helpweb=helpweb.html
+
+[setupinfo]
+
+starterkit=https://github.com/NNNIC/psgg-starter-kit.git 0e5d1e482ea7edce6fd0b43d8572377598f3bfc6
+
+
+lang=c#
+framework=unity
+
+statemachie=Main2Control
+prefix=__PREFIX__
+xlsdir=C:\Users\gea01\Documents\psgg\samples\EscapeFromMars\m2\UnityProject\Assets\Scene\9000_Test\sc2\doc
+gendir=C:\Users\gea01\Documents\psgg\samples\EscapeFromMars\m2\UnityProject\Assets\Scene\9000_Test\sc2
+genrdir=..
+incrdir=.
+
+code_output_start=[PSGG OUTPUT START]
+code_output_end=[PSGG OUTPUT END]
+
+[jpn]
+title=C# Unity スタートキット  2019/1/17
+
+detail=@@@
+
+C# 用のステートマシンを作成します。
+
+#変更点
+- basestate追加
+- マネージャ改良
+- macro設定を移動
+- サブルーチン機能追加
+
+# ドキュメント用フォルダ
+   ステート図ファイルとエディタ起動用ショートカットを格納
+
+      C:\Users\gea01\Documents\psgg\samples\EscapeFromMars\m2\UnityProject\Assets\Scene\9000_Test\sc2\doc
+
+  以下のファイルを作成します。
+
+      Main2Control.pssg   --- エディタで次のエクセルファイルを開く。
+      Main2Control.xlsx   --- ステート図格納用Excelファイル。エディタが編集。
+
+# ソース用フォルダ
+　エディタが生成ソースファイル、ユーザ実装ソースファイル、及び管理クラスファイルを格納
+
+      C:\Users\gea01\Documents\psgg\samples\EscapeFromMars\m2\UnityProject\Assets\Scene\9000_Test\sc2
+
+  以下のファイルが作成されます。
+
+      Main2Control.cs  --- Excelファイルからの変換ソースコードを埋め込む。
+
+注意 : 既に同名のファイルがある場合は生成されません。
+　　　 削除してから生成してください。
+
+@@@
+
+
+[en]
+title=C# Unity STARTER KIT  2019/1/17
+
+detail=@@@
+This dialog will create files for a state machine.
+
+# Update
+- Added basestate
+- Improved manager
+- Moved the place of macro definition
+- Added subroutine feature
+
+# Document Folder
+　This folder will contain a state chart file and the shortcut of the editor.
+
+      C:\Users\gea01\Documents\psgg\samples\EscapeFromMars\m2\UnityProject\Assets\Scene\9000_Test\sc2\doc
+
+  File:
+
+      Main2Control.pssg  --- The editor opens the below excel file.
+      Main2Control.xlsx  --- Excel File that has a state chart. The editor edits this file.
+
+# Source Folder
+   This folder will contain a source file generated by the editor, a user implemetation source file, and a manager source file.
+
+      C:\Users\gea01\Documents\psgg\samples\EscapeFromMars\m2\UnityProject\Assets\Scene\9000_Test\sc2
+
+　File:
+      Main2Control.cs   -- the editor will convert from the excel file into this file.
+
+
+NOTE : If the same name files exists, the file will not be created.
+       Please delete the same name files ahead of the creation.
+
+
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=help
+
+###VARIOUS-CONTENTS-BEGIN###
+; -----
+; 項目説明
+; -----
+
+[embed]
+jpn=@@@
+コード埋め込み用。
+ステート名がE_時に利用可能。
+ステート機能は利用できない。
+@@@
+en=@@@
+For embedding code.
+Enable this section if state name starts with "E_".
+Disabled state features.
+@@@
+
+[members]
+jpn=@@@
+メンバ変数及び関数等を指定する。
+@@@
+en=@@@
+Specify members, variables, classes,  etc.
+@@@
+
+[state]
+jpn=@@@
+ステート名を指定する。
+英文字、数字、アンダーバーで構成される。
+先頭は英文字およびアンダーバー。
+@@@
+en=@@@
+Specify a state name.
+The state name consits of alphabet, number and underbar except that the head characther should be alphabet or a underbar.
+@@@
+
+[basestate]
+jpn=@@@
+継承元を指定する。
+@@@
+en=@@@
+Specify inheritance source.
+@@@
+
+[thumbnail]
+jpn=@@@
+説明用のイメージを指定する。
+@@@
+en=@@@
+Specify a image for explanation of this state.
+@@@
+
+[vars]
+jpn=@@@
+変数宣言を指定する。
+@@@
+en=@@@
+Specify variable definitions.
+@@@
+
+[init]
+jpn=@@@
+初期化用処理を指定する。
+@@@
+en=@@@
+Specify a initial process.
+@@@
+
+[update]
+jpn=@@@
+更新処理を指定する。
+@@@
+en=@@@
+Specify a update process.
+@@@
+
+[wait]
+jpn=@@@
+待ち条件を指定する。
+true時にループを解除する。
+@@@
+en=@@@
+Specify a waiting condition.
+Release the loop if the condition is true.
+@@@
+
+[post_wait]
+jpn=@@@
+'wait'後の処理を指定する。
+@@@
+en=@@@
+Specify the post process after 'wait'.
+@@@
+
+[gosubstate]
+jpn=@@@
+サブルーチンを呼び出す。
+サブルーチンの開始ステート名を指定する。
+@@@
+en=@@@
+Call a subroutine.
+Specify the starting state name of the subroutine.
+@@@
+
+[return]
+jpn=@@@
+サブルーチン処理を終了するときに指定する。"return"等を記述。
+@@@
+en=@@@
+Use for returning from the subroutine. Write "return" etc.
+@@@
+
+[branch]
+jpn=@@@
+分岐処理を指定する。
+１行に一つの分岐命令を書く。
+GUIにより上書きされるため引数は適当に指定する。
+例）
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+en=@@@
+Specify branch functions.
+Each line has a branch function.
+Specify a tentavie parameter for each branch function because GUI overwrites the parameter.
+i.e)
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+
+[nextstate]
+jpn=@@@
+次に実行するステートを指定する。
+@@@
+en=@@@
+Specify the next state to be executed.
+@@@
+
+[nowait]
+jpn=@@@
+次のステートへ同期待ちをせず実行する時に 'nowait'等を指定する。
+同期待ち時には何も指定しない。
+@@@
+en=@@@
+Specify 'nowait' and so on if the next state will be execute without a sync wait.
+Do not specify any word wheh the next state will be execute with a sync wait.
+@@@
+
+[!dir]
+jpn=@@@
+システムがステートのディレクトリ指定に使用。
+@@@
+en=@@@
+System uses this for the directory path of the state.
+@@@
+
+[!uuid]
+jpn=@@@
+システムがステートのuuid指定に使用。
+@@@
+en=@@@
+System uses this for the uuid of the state.
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=itemsinfo
+
+###VARIOUS-CONTENTS-BEGIN###
+
+###VARIOUS-CONTENTS-END###
+
+
+
+------#======*<Guid(4DC98CBA-6257-4E26-A454-A53F85BC234C)>*======#------
+
+

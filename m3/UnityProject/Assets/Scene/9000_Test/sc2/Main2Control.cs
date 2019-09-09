@@ -75,7 +75,7 @@ public partial class Main2Control : MonoBehaviour {
     }
 
 	#region    // [PSGG OUTPUT START] indent(8) $/./$
-//  psggConverterLib.dll converted from Main2Control.xlsx. 
+//  psggConverterLib.dll converted from Main2Control.xlsx.    psgg-file:doc\Main2Control.psgg
         /*
             S_CAM_T1
             カメラを発射正面へ

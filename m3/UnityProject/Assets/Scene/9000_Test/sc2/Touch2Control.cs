@@ -72,71 +72,71 @@ public partial class Touch2Control : MonoBehaviour {
     }
 
 	#region    // [PSGG OUTPUT START] indent(4) $/./$
-//  psggConverterLib.dll converted from Touch2Control.xlsx. 
-        /*
-            S_END
-        */
-        void S_END(bool bFirst)
+//  psggConverterLib.dll converted from Touch2Control.xlsx.    psgg-file:doc\Touch2Control.psgg
+    /*
+        S_END
+    */
+    void S_END(bool bFirst)
+    {
+    }
+    /*
+        S_INIT
+        初期化
+    */
+    void S_INIT(bool bFirst)
+    {
+        //
+        if (!HasNextState())
         {
+            Goto(S_WAIT_TOUCH);
         }
-        /*
-            S_INIT
-            初期化
-        */
-        void S_INIT(bool bFirst)
+    }
+    /*
+        S_MOVE_DST
+        DST移動
+    */
+    void S_MOVE_DST(bool bFirst)
+    {
+        if (bFirst)
         {
-            //
-            if (!HasNextState())
-            {
-                Goto(S_WAIT_TOUCH);
-            }
+            dst_move(0.1f);
         }
-        /*
-            S_MOVE_DST
-            DST移動
-        */
-        void S_MOVE_DST(bool bFirst)
+        if (!dst_done()) return;
+        //
+        if (!HasNextState())
         {
-            if (bFirst)
-            {
-                dst_move(0.1f);
-            }
-            if (!dst_done()) return;
-            //
-            if (!HasNextState())
-            {
-                Goto(S_WAIT_TOUCH);
-            }
+            Goto(S_WAIT_TOUCH);
         }
-        /*
-            S_START
-        */
-        void S_START(bool bFirst)
+    }
+    /*
+        S_START
+    */
+    void S_START(bool bFirst)
+    {
+        //
+        if (!HasNextState())
         {
-            //
-            if (!HasNextState())
-            {
-                Goto(S_INIT);
-            }
+            Goto(S_INIT);
         }
-        /*
-            S_WAIT_TOUCH
-            タッチ待ち
-        */
-        void S_WAIT_TOUCH(bool bFirst)
+    }
+    /*
+        S_WAIT_TOUCH
+        タッチ待ち
+    */
+    void S_WAIT_TOUCH(bool bFirst)
+    {
+        if (bFirst)
         {
-            if (bFirst)
-            {
-                touch_start();
-            }
-            touch_update();
-            if (!touch_done()) return;
-            //
-            if (!HasNextState())
-            {
-                Goto(S_MOVE_DST);
-            }
+            touch_start();
         }
+        touch_update();
+        if (!touch_done()) return;
+        //
+        if (!HasNextState())
+        {
+            Goto(S_MOVE_DST);
+        }
+    }
 
 
 	#endregion // [PSGG OUTPUT END]
